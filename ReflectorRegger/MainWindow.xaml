@@ -1,0 +1,34 @@
+﻿<Window x:Class="ReflectorRegger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReflectorRegger"
+        mc:Ignorable="d"
+        Title="ReflectorRegger" Height="350" Width="525" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid Margin="3" TextBlock.FontSize="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock DockPanel.Dock="Left" Text="用户数："></TextBlock>
+            <TextBox Text="{Binding UserCount}"></TextBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1"  VerticalAlignment="Center">
+            <TextBlock DockPanel.Dock="Left" Text="版本："></TextBlock>
+            <ComboBox ItemsSource="{Binding Editions}" SelectedItem="{Binding CurrentEdition}"></ComboBox>
+        </DockPanel>
+        <Button Grid.Column="2" Content="生成" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{x:Static local:MainWindow.GenerateCommand}"></Button>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="{Binding GeneratedKey}" IsReadOnly="True"></TextBox>
+        <TextBox Margin="3" Grid.Row="2"  Grid.ColumnSpan="3" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"  Text="{Binding RegisterKey}"></TextBox>
+        <TextBox Margin="3" Grid.Row="3" Grid.ColumnSpan="3" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"  Text="{Binding ProductKey}"></TextBox>
+    </Grid>
+</Window>
